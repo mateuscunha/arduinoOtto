@@ -7,8 +7,8 @@ int lastCommand = 0;
 #define N_SERVOS 4
 #define PIN_RR 5
 #define PIN_RL 4
-#define PIN_YR 2
-#define PIN_YL 3
+#define PIN_YR 3
+#define PIN_YL 2
 
 #define ECHOPIN 9       // Pin to receive echo pulse
 #define TRIGPIN 8 
@@ -145,12 +145,13 @@ void backyard(int steps, int T){
 }
 
 void walk(int steps, int T){
-    int A[4]= {0, 0, 100, 100};
+    int A[4]= {15, 15, 30, 30};
     int O[4] = {0, 0, 0, 0};
     double phase_diff[4] = {DEG2RAD(0), DEG2RAD(0), DEG2RAD(90), DEG2RAD(90)};
     
     for(int i=0;i<steps;i++)oscillate(A,O, T, phase_diff);
 }
+
 
 void oscillate(int A[N_SERVOS], int O[N_SERVOS], int T, double phase_diff[N_SERVOS]){
   for (int i=0; i<4; i++) {
@@ -182,6 +183,4 @@ void turnRight(int steps, int T){
     
     for(int i=0;i<steps;i++)oscillate(A,O, T, phase_diff);
 }
-
-
 
